@@ -4,9 +4,15 @@ namespace BookStore.Controllers
 {
     public class Home : Controller
     {
-        public string Index()
+        public ViewResult Index()
         {
-            return "Akil";
+            return View();
+        }
+
+        public ViewResult ContactUs()
+        {
+            return View();
         }
     }
 }
+ 

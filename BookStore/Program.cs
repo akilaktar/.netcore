@@ -34,6 +34,7 @@ if (!app.Environment.IsDevelopment())
 //});
 
 app.UseHttpsRedirection();
+//if we use anystatic file like images and css,js file or folder
 app.UseStaticFiles();
 
 app.UseRouting();
