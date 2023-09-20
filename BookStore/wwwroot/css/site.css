@@ -16,3 +16,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    white-space:nowrap;
+    line-height:60px;
+}
+.card {
+    margin-bottom: 10px;
+}

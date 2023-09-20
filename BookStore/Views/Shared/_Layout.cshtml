@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Book Store Application</title>
+
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="\home/Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\home/ContactUs">ContactUs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\home/AboutUs">AboutUs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="\Book/GetAllBooks">All Book</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="nav navbar-nav navbar-right" style="padding: 6px">
+                        <button type="button" class="btn btn-outline-primary"><span class="glyphicon glyphicon-user fontawesome-lock"></span>  Login</button>
+                        <button type="button" class="btn btn-outline-primary"><span class="glyphicon glyphicon-log-in"></span>  Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    @RenderSection("breadcrumb",required:false)
+    @RenderSection("Jquery",required:false)
+    <main role="main">
+        @RenderBody()
+    </main>
+    <footer class="border-top footer text-muted text-center">
+        <div class="container"> Copyright &copy; Book Store @DateTime.Now</div>
+    </footer>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    
+    @RenderSection("script",required:false)
+</body>
+
+</html>

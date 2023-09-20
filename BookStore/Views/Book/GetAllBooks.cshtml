@@ -1,7 +1,24 @@
-﻿
-@{
-    ViewData["Title"] = "GetAllBooks";
-}
+﻿@using BookStore.Models;
+@model IEnumerable<BookModel>
 
-<h1>GetAllBooks</h1>
+<h3 class="display-4">All Books</h3>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div class="btn-group"><a href="\Book/GetBook/@item.Id" class="btn btn-primary">Book Details</a></div>
+                    <small class="text-muted">@item.Author</small>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
 
