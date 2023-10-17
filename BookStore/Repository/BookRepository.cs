@@ -1,10 +1,49 @@
-﻿using BookStore.Models;
+﻿using BookStore.Data;
+using BookStore.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Hosting;
+using System.Security.AccessControl;
 using static BookStore.Repository.BookRepository;
 
 namespace BookStore.Repository
 {
     public class BookRepository
     {
+        private readonly BookStoreContext _context = null;
+            
+        public BookRepository(BookStoreContext context, IWebHostEnvironment hostEnvironment)
+        {
+            _context = context;
+        }
+
+        public async Task<int> AddNewBook(BookModel book)
+        {
+            var newBook = new Books()
+            {
+                Title = book.Title,
+                Author = book.Author,
+                Description = book.Description,
+                Category = book.Category,
+                Language = book.Language,
+                Address = book.Address,
+                TotalPages = book.TotalPages,
+                CreatedOn = book.CreatedOn,
+                UpdatedOn = book.UpdatedOn,
+                ImageFile = book.ImageFile
+            };
+            //string wwwRootPath = _hostEnvironment.WebRootPath;
+            //string fileName = Path.GetFileNameWithoutExtension(book.ImageFile);
+            //string extension = Path.GetExtension(book.ImageFile);
+            //book.ImageFile = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            //string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+            //using (var fileStream = new FileStream(path, FileMode.Create))
+            //{
+            //    await book.ImageFile.CopyToAsync(fileStream);
+            //}
+            await _context.Books.AddAsync(newBook);
+            await _context.SaveChangesAsync();
+            return newBook.Id;
+        }
         public List<BookModel> GetAllBooks()
         {
             return DataSource();
@@ -33,6 +72,6 @@ namespace BookStore.Repository
              new BookModel(){Id=6,Title="JQuery",Author="Aki", Description = "JQuery book Description",Category="Programming",Language="English",TotalPages=134}
             };
         }
-    }   
-    
+    }
+
 }

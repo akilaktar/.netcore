@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Book Store Application</title>
+    <title>@ViewData["Title"] || Book Store Application</title>
 
     <link href="~/css/site.css" rel="stylesheet" />
 
@@ -30,21 +30,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="\home/Index">Home</a>
+                        <a class="nav-link" asp-controller="home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\home/ContactUs">ContactUs</a>
+                        <a class="nav-link" asp-controller="home" asp-action="ContactUs">ContactUs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\home/AboutUs">AboutUs</a>
+                        <a class="nav-link" asp-controller="home" asp-action="AboutUs">AboutUs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\Book/GetAllBooks">All Book</a>
+                        <a class="nav-link" asp-controller="Book" asp-action="GetAllBooks">All Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Book" asp-action="AddNewBook">Add Book</a>
                     </li>
                 </ul>
                 <ul>
                     <li class="nav navbar-nav navbar-right" style="padding: 6px">
-                        <button type="button" class="btn btn-outline-primary"><span class="glyphicon glyphicon-user fontawesome-lock"></span>  Login</button>
+                        <button type="button" class="btn btn-outline-primary"><span class="glyphicon glyphicon-user fontawesome-lock"></span> Login</button>
                         <button type="button" class="btn btn-outline-primary"><span class="glyphicon glyphicon-log-in"></span>  Logout</button>
                     </li>
                 </ul>

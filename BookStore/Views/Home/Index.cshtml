@@ -1,6 +1,18 @@
-﻿<section class="jumbotron text-center">
+﻿@{
+    dynamic data = @ViewBag.Data;
+    var book = (BookModel)ViewBag.book;
+
+    ViewData["Title"] = "Index";
+}
+
+<section class="jumbotron text-center">
     <div class="container">
-        <h1>Welcome to Bookstore</h1>
+        <h1>Welcome to Bookstore @ViewBag.title</h1>
+        @data.Id @data.Name
+        <br />
+
+        @book.Id
+        @book.Author
         <p class="lead text-muted">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices enim vel sem sollicitudin, ac posuere quam sodales. Nullam felis turpis, accumsan ac tempus et, placerat at sapien.
         </p>

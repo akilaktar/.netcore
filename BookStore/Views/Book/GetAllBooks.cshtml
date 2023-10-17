@@ -1,6 +1,8 @@
-﻿@using BookStore.Models;
+﻿@* @using BookStore.Models; *@ @* added it in ViewImports.cshtml for common *@
 @model IEnumerable<BookModel>
-
+@{
+    ViewData["Title"] = "All Books";
+}
 <h3 class="display-4">All Books</h3>
 <div class="row">
     @foreach (var item in Model)

@@ -1,10 +1,17 @@
+using BookStore.Data;
+using BookStore.Repository;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Myconnection")));
+//builder.Services.AddDbContext<BookStoreContext>(options => options.UseSqlServer("Server=FYNXTLAPIND064\\SQLEXPRESS;Database=BookStore;Integrated Security=True;TrustServerCertificate=True;"));
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<BookRepository, BookRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -15,38 +22,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//app.Use(async (context, next) =>
-//{
-//    await context.Response.WriteAsync("hellow my first middleware");
-//    await next();
-//});
-
-//app.Use(async (context, next) =>
-//{
-//    await context.Response.WriteAsync("Hello World From 2nd Middleware!");
-
-//    await next();
-//});
-
-//app.Run(async (context) =>
-//{
-//    await context.Response.WriteAsync("Hello World From 3rd Middleware");
-//});
-
 app.UseHttpsRedirection();
-//if we use anystatic file like images and css,js file or folder
+
 app.UseStaticFiles();
 
 app.UseRouting();
-
-//app.UseEndpoints(endpoint =>
-//{
-
-//    endpoint.Map("/akil", async context =>
-//    {
-//        await context.Response.WriteAsync("Hello Akil World");
-//    });
-//});
 
 app.UseEndpoints(endpoint =>
 {

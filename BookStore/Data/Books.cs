@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace BookStore.Models
+namespace BookStore.Data
 {
-    public class BookModel
+    public class Books
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -10,10 +10,10 @@ namespace BookStore.Models
         public string Description { get; set; }
         public string Category { get; set; }
         public string Language { get; set; }
-        public string Address { get; set; }
         public int TotalPages { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
+        public String Address { get; set; }
 
         [DisplayName("Upload File")]
         public IFormFile ImageFile { get; set; }

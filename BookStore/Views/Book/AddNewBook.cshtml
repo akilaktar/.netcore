@@ -1,0 +1,58 @@
+﻿@model BookModel
+@{
+    ViewData["Title"] = "AddNewBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@* <form asp-controller="Book" asp-action="AddNewBook" method="post"> *@
+<form id="btn_AddNewBook">
+    <div class="container">
+        <div class="form-group col-md-4">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Author"></label>
+            <input asp-for="Author" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Category"></label>
+            <input asp-for="Category" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Language"></label>
+            <input asp-for="Language" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="TotalPages"></label>
+            <input asp-for="TotalPages" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="CreatedOn"></label>
+            <input asp-for="CreatedOn" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="UpdatedOn"></label>
+            <input asp-for="UpdatedOn" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input asp-for="ImageFile" class="custom-file-input">
+            <label asp-for="ImageFile" for="customfile" class="control-label"></label>
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="submit" id="btn_submit" value="Add Book" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+<script src="~/js/createbook.js"></script>
