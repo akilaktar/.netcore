@@ -1,6 +1,7 @@
 ﻿using BookStore.Models;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 
 namespace BookStore.Controllers
 {
@@ -9,7 +10,7 @@ namespace BookStore.Controllers
         private readonly BookRepository _bookrepository = null;
         private readonly IWebHostEnvironment _hostEnvironment;
         public BookController(BookRepository bookRepository, IWebHostEnvironment hostEnvironment)
-        { 
+        {
             _bookrepository = bookRepository;
             _hostEnvironment = hostEnvironment;
         }
@@ -39,20 +40,35 @@ namespace BookStore.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<ViewResult> AddNewBook(BookModel book)
+        public async Task<IActionResult> AddNewBook(BookModel book)
         {
-            //if(ModelState.IsValid)
-            //{
-                if(book.ImageFile != null)
+            if(ModelState.IsValid)
+            {
+                if (book.File != null)
                 {
-                    string folder = "books/cover/";
-                    folder += book.ImageFile.FileName + Guid.NewGuid().ToString();
-                    string serverfolder = Path.Combine(_hostEnvironment.WebRootPath, folder);
-                    await book.ImageFile.CopyToAsync(new FileStream(serverfolder, FileMode.Create));
+                    if (book.File.Length > 0)
+                    {
+                        //Getting FileName
+                        var fileName = Path.GetFileName(book.File.FileName);
+                        //Assigning Unique Filename (Guid)
+                        var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+                        //Getting file Extension
+                        var fileExtension = Path.GetExtension(fileName);
+                        // concatenating  FileName + FileExtension
+                        var newFileName = String.Concat(myUniqueFileName, fileExtension);
+                        var filepath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")).Root + $@"\{fileName}";
+                        using (FileStream fs = System.IO.File.Create(filepath))
+                        {
+                            book.File.CopyTo(fs);
+                            fs.Flush();
+                        }
+                    }
+                    book.FileName = Path.GetFileName(book.File.FileName);
                 }
                 await _bookrepository.AddNewBook(book);
-            //}
-            return View();
+            }
+
+            return View("AddNewBook");
         }
     }
 }

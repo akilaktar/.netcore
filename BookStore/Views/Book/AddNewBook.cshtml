@@ -7,49 +7,71 @@
 
 
 @* <form asp-controller="Book" asp-action="AddNewBook" method="post"> *@
-<form id="btn_AddNewBook">
+<form id="btn_AddNewBook" enctype="multipart/form-data" method="post">
     <div class="container">
         <div class="form-group col-md-4">
             <label asp-for="Title"></label>
             <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="Author"></label>
             <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="Description"></label>
             <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="Category"></label>
             <input asp-for="Category" class="form-control" />
+            <span asp-validation-for="Category" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="Language"></label>
             <input asp-for="Language" class="form-control" />
+            <span asp-validation-for="Language" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="TotalPages"></label>
             <input asp-for="TotalPages" class="form-control" />
+            <span asp-validation-for="TotalPages" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="Address"></label>
             <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="CreatedOn"></label>
             <input asp-for="CreatedOn" class="form-control" />
+            <span asp-validation-for="CreatedOn" class="text-danger"></span>
         </div>
         <div class="form-group col-md-4">
             <label asp-for="UpdatedOn"></label>
             <input asp-for="UpdatedOn" class="form-control" />
+            <span asp-validation-for="UpdatedOn" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <input asp-for="ImageFile" class="custom-file-input">
-            <label asp-for="ImageFile" for="customfile" class="control-label"></label>
-            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        <div class="form-group col-md-4">
+            <div class="col-12">
+                <label class="col-form-label">Enter File Name For Save</label>
+                <input asp-for="FileName" class="form-control" />
+                <span asp-validation-for="FileName" class="text-danger"></span>
+                <span asp-validation-for="FileName" class="text-danger"></span>
+            </div>
         </div>
+
+        <div class="form-group col-md-4">
+            <div class="col-12">
+                <label class="col-form-label">Select File</label>
+                <input asp-for="File" class="form-control" multiple />
+                <span asp-validation-for="File" class="text-danger"></span>
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+        </div>
+
         <div class="form-group col-md-4">
             <input type="submit" id="btn_submit" value="Add Book" class="btn btn-primary" />
         </div>

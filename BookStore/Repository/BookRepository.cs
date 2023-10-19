@@ -29,17 +29,9 @@ namespace BookStore.Repository
                 TotalPages = book.TotalPages,
                 CreatedOn = book.CreatedOn,
                 UpdatedOn = book.UpdatedOn,
-                ImageFile = book.ImageFile
+                FileName = book.FileName
             };
-            //string wwwRootPath = _hostEnvironment.WebRootPath;
-            //string fileName = Path.GetFileNameWithoutExtension(book.ImageFile);
-            //string extension = Path.GetExtension(book.ImageFile);
-            //book.ImageFile = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            //string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-            //using (var fileStream = new FileStream(path, FileMode.Create))
-            //{
-            //    await book.ImageFile.CopyToAsync(fileStream);
-            //}
+            
             await _context.Books.AddAsync(newBook);
             await _context.SaveChangesAsync();
             return newBook.Id;
