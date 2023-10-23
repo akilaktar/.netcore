@@ -21,12 +21,14 @@ $("#btn_submit").click(function () {
     var UpdatedOn = $('#UpdatedOn').val();
     var FileName = result;
     var Files = files;
+    var City = $("#cityLabel").val();
+    var Gender = $('input[name="Gender"]:checked').val();
     $.ajax({
         type: "Post",
         url: "/Book/AddNewBook",
         cache: false,
         data: {
-            "Title": Title, "Author": Author, "Description": Description, "Category": Category, "Language": Language, "Address": Address, "TotalPages": TotalPages, "CreatedOn": CreatedOn, "UpdatedOn": UpdatedOn, "FileName": FileName, "File": Files
+            "Title": Title, "Author": Author, "Description": Description, "Category": Category, "Language": Language, "Address": Address, "TotalPages": TotalPages, "CreatedOn": CreatedOn, "UpdatedOn": UpdatedOn, "FileName": FileName, "File": Files, "City": City, "Gender": Gender
         },
         datatype: 'application/json',
         success: function () {

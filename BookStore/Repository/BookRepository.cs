@@ -29,7 +29,9 @@ namespace BookStore.Repository
                 TotalPages = book.TotalPages,
                 CreatedOn = book.CreatedOn,
                 UpdatedOn = book.UpdatedOn,
-                FileName = book.FileName
+                FileName = book.FileName,
+                City=book.City,
+                Gender=book.Gender,
             };
             
             await _context.Books.AddAsync(newBook);

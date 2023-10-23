@@ -31,6 +31,7 @@ namespace BookStore.Models
 
         [NotMapped]
         public  IFormFile? File { get; set; }
-        
+        public int? City { get; set; }
+        public string? Gender { get; set; }
     }
 }

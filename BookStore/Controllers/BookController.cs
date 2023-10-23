@@ -1,6 +1,7 @@
 ﻿using BookStore.Models;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.FileProviders;
 
 namespace BookStore.Controllers
@@ -37,12 +38,34 @@ namespace BookStore.Controllers
 
         public ViewResult AddNewBook()
         {
+            List<SelectListItem> cities = new()
+            {
+                new SelectListItem { Value = "1", Text = "Kolkata" },
+                new SelectListItem { Value = "2", Text = "Solapur" },
+                new SelectListItem { Value = "3", Text = "Nanded" },
+                new SelectListItem { Value = "4", Text = "Nashik" },
+                new SelectListItem { Value = "5", Text = "Nagpur" },
+                new SelectListItem { Value = "6", Text = "Kolhapur" },
+                new SelectListItem { Value = "7", Text = "Pune" },
+                new SelectListItem { Value = "8", Text = "Mumbai" },
+                new SelectListItem { Value = "9", Text = "Delhi" },
+                new SelectListItem { Value = "10", Text = "Noida" }
+            };
+            ViewBag.cities = cities;
+
+            List<Gender> genders = new()
+            {
+                new Gender {Id=1,Name="Male"},
+                new Gender {Id=2,Name="Female"}
+            };
+            ViewBag.gender = genders;
+
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel book)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (book.File != null)
                 {
@@ -67,7 +90,12 @@ namespace BookStore.Controllers
                 }
                 await _bookrepository.AddNewBook(book);
             }
-
+            List<Gender> genders = new()
+            {
+                new Gender {Id=1,Name="Male"},
+                new Gender {Id=2,Name="Female"}
+            };
+            ViewBag.gender = genders;
             return View("AddNewBook");
         }
     }

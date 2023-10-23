@@ -18,6 +18,8 @@ namespace BookStore.Data
         public string? FileName { get; set; }
         [NotMapped]
         public IFormFile? File { get; set; }
-        
+        public int? City { get; set; }
+        public string? Gender { get; set; }
+
     }
 }

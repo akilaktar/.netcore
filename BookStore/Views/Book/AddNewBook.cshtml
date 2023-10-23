@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "AddNewBook";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var Gender =  ViewBag.gender;
 }
 
 
@@ -69,6 +70,22 @@
                 <input asp-for="File" class="form-control" multiple />
                 <span asp-validation-for="File" class="text-danger"></span>
                 <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <div class="col-12">
+                <label asp-for="City"></label>
+                <select name="City" id="cityLabel" class="form-control" asp-items="@ViewBag.cities"></select>
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            <div class="col-12">
+                <label asp-for="Gender"></label>
+                @foreach (var item in Gender)
+                {
+                    <input asp-for="Gender" type="radio" value="@item.Id" /> @item.Name
+                }
             </div>
         </div>
 
